@@ -214,3 +214,54 @@ footer {
     height: 200px;
   }
 }
+
+/* Fish swimming animations */
+
+.fish-one {
+  animation: swimRight 5s ease-in-out infinite alternate;
+}
+
+.fish-two {
+  animation: swimLeft 6s ease-in-out infinite alternate;
+}
+
+.fish-three {
+  animation: swimRight 7s ease-in-out infinite alternate;
+}
+
+@keyframes swimRight {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(70px);
+  }
+}
+
+@keyframes swimLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-70px);
+  }
+}
+
+/* Floating bubbles */
+
+.bubble {
+  animation: floatBubble 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatBubble {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-25px);
+  }
+}
+

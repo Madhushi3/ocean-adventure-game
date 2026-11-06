@@ -8,12 +8,15 @@ function App() {
   const [answer, setAnswer] = useState('');
   const [message, setMessage] = useState('');
   const [score, setScore] = useState(0);
+  const [coins, setCoins] = useState(0);
+  const [answered, setAnswered] = useState(false);
   const [loading, setLoading] = useState(false);
 
   async function startGame() {
     setLoading(true);
     setMessage('');
     setAnswer('');
+    setAnswered(false);
 
     try {
       const data = await getFishQuestion();
@@ -28,12 +31,23 @@ function App() {
   function checkAnswer() {
     if (answer.trim() === '') {
       setMessage('Please enter your answer!');
+    } else if (answered) {
+      setMessage('You already answered! Try the next question.');
     } else if (Number(answer) === Number(question.fish)) {
-      setMessage('Correct! You earned a star! ⭐');
+      setMessage('Correct! You earned a star and 10 coins! ⭐');
       setScore(score + 1);
+      setCoins(coins + 10);
+      setAnswered(true);
     } else {
       setMessage('Try again, little explorer!');
     }
+  }
+
+  function goHome() {
+    setQuestion(null);
+    setMessage('');
+    setAnswer('');
+    setAnswered(false);
   }
 
   return (
@@ -42,7 +56,10 @@ function App() {
       <header className="game-header">
         <h1>🐠 Ocean Adventure</h1>
         <p>Explore the ocean and collect treasures!</p>
-        <div className="score">⭐ Stars: {score}</div>
+
+        <div className="score">
+          ⭐ Stars: {score} | 💎 Coins: {coins}
+        </div>
       </header>
 
       {!question ? (
@@ -56,6 +73,7 @@ function App() {
             <span className="shell">🐚</span>
             <span className="treasure">💎</span>
             <span className="chest">🪸</span>
+
             <span className="bubble bubble-one">○</span>
             <span className="bubble bubble-two">○</span>
             <span className="bubble bubble-three">○</span>
@@ -98,21 +116,26 @@ function App() {
 
           <br />
 
-          <button onClick={checkAnswer}>
+          <button
+            onClick={checkAnswer}
+            disabled={answered}
+          >
             Submit Answer
           </button>
 
           <p className="message">{message}</p>
 
-          <button className="next-button" onClick={startGame}>
+          <button
+            className="next-button"
+            onClick={startGame}
+          >
             Next Question ➜
           </button>
 
-          <button className="home-button" onClick={() => {
-            setQuestion(null);
-            setMessage('');
-            setAnswer('');
-          }}>
+          <button
+            className="home-button"
+            onClick={goHome}
+          >
             🏠 Home
           </button>
 
