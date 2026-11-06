@@ -1,0 +1,216 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+.game-container {
+  min-height: 100vh;
+  padding: 30px 20px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(180deg, #32c5df, #0879b9, #063b78);
+  overflow: hidden;
+}
+
+.game-header h1 {
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.game-header p {
+  margin-top: 5px;
+  color: #e4fbff;
+}
+
+.score {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 25px;
+  background: #ffffff35;
+  border-radius: 30px;
+  font-weight: 800;
+}
+
+.home-card,
+.game-card {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #ffffff;
+  color: #075078;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px #00375c50;
+}
+
+.ocean-scene {
+  position: relative;
+  height: 230px;
+  margin-bottom: 20px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #8ceafa, #25a9d0);
+  overflow: hidden;
+}
+
+.fish,
+.starfish,
+.shell,
+.treasure,
+.chest {
+  position: absolute;
+  font-size: 48px;
+}
+
+.fish-one {
+  top: 35px;
+  left: 15%;
+}
+
+.fish-two {
+  top: 110px;
+  right: 18%;
+}
+
+.fish-three {
+  bottom: 15px;
+  left: 38%;
+}
+
+.starfish {
+  top: 15px;
+  right: 12%;
+  font-size: 35px;
+}
+
+.shell {
+  bottom: 8px;
+  left: 12%;
+}
+
+.treasure {
+  bottom: 15px;
+  right: 10%;
+}
+
+.chest {
+  top: 100px;
+  left: 48%;
+  font-size: 38px;
+}
+
+.bubble {
+  position: absolute;
+  color: white;
+  font-size: 30px;
+}
+
+.bubble-one {
+  top: 20px;
+  left: 45%;
+}
+
+.bubble-two {
+  top: 80px;
+  left: 8%;
+}
+
+.bubble-three {
+  bottom: 20px;
+  right: 35%;
+}
+
+.home-card h2,
+.game-card h2 {
+  font-size: 28px;
+  margin: 15px 0;
+}
+
+.home-card p,
+.game-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+button {
+  padding: 14px 28px;
+  margin: 12px 5px;
+  border: none;
+  border-radius: 30px;
+  background: #ffb703;
+  color: #17304e;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  background: #ff9800;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.question-image {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 20px auto;
+  border-radius: 15px;
+}
+
+input {
+  width: 220px;
+  padding: 13px;
+  border: 2px solid #25a9d0;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.message {
+  color: #078b67;
+  font-weight: 800;
+}
+
+.next-button {
+  background: #16b8c9;
+  color: white;
+}
+
+.home-button {
+  background: #e3f5ff;
+  color: #075078;
+}
+
+footer {
+  margin-top: 25px;
+  color: #e4fbff;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .game-header h1 {
+    font-size: 30px;
+  }
+
+  .home-card,
+  .game-card {
+    padding: 20px 15px;
+  }
+
+  .ocean-scene {
+    height: 200px;
+  }
+}
