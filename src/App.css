@@ -39,16 +39,42 @@ body {
   font-weight: 800;
 }
 
+/* Home and game cards */
+
 .home-card,
-.game-card {
-  max-width: 650px;
+.game-card,
+.levels-card,
+.level-complete-card {
+  max-width: 700px;
   margin: 30px auto;
   padding: 30px;
-  background: #ffffff;
+  background: white;
   color: #075078;
   border-radius: 28px;
   box-shadow: 0 12px 30px #00375c50;
 }
+
+.home-card h2,
+.game-card h2,
+.levels-card h2 {
+  font-size: 28px;
+  margin: 15px 0;
+}
+
+.home-card p,
+.game-card p,
+.levels-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.current-level {
+  font-weight: 900;
+  color: #078b9c;
+}
+
+/* Underwater home scene */
 
 .ocean-scene {
   position: relative;
@@ -71,16 +97,19 @@ body {
 .fish-one {
   top: 35px;
   left: 15%;
+  animation: swimRight 5s ease-in-out infinite alternate;
 }
 
 .fish-two {
   top: 110px;
   right: 18%;
+  animation: swimLeft 6s ease-in-out infinite alternate;
 }
 
 .fish-three {
   bottom: 15px;
   left: 38%;
+  animation: swimRight 7s ease-in-out infinite alternate;
 }
 
 .starfish {
@@ -105,10 +134,13 @@ body {
   font-size: 38px;
 }
 
+/* Bubbles */
+
 .bubble {
   position: absolute;
   color: white;
   font-size: 30px;
+  animation: floatBubble 3s ease-in-out infinite alternate;
 }
 
 .bubble-one {
@@ -126,18 +158,174 @@ body {
   right: 35%;
 }
 
-.home-card h2,
-.game-card h2 {
-  font-size: 28px;
+/* Level selection */
+
+.levels-card {
+  max-width: 750px;
+}
+
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.level-button {
+  min-height: 165px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 18px 10px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.level-button.unlocked {
+  background: linear-gradient(135deg, #7ce8ed, #28b7d4);
+  color: #064b70;
+  border: 3px solid #149dbd;
+}
+
+.level-button.unlocked:hover {
+  background: linear-gradient(135deg, #ffe28a, #ffb703);
+  transform: translateY(-5px);
+}
+
+.level-button.locked {
+  background: #e5e9ed;
+  color: #89939c;
+  border: 3px solid #cbd2d8;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.level-icon {
+  font-size: 35px;
+}
+
+.level-button strong {
+  font-size: 19px;
+}
+
+.level-button span:not(.level-icon) {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.level-button small {
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.level-hint {
+  color: #078b9c;
+  font-weight: 800;
+}
+
+/* Game progress */
+
+.game-progress {
+  margin: 15px auto;
+  font-weight: 800;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  margin-top: 10px;
+  background: #dceef5;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #ffbd35;
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+.loading-text {
+  margin: 30px 0;
+  color: #078b9c;
+}
+
+/* Treasure chest */
+
+.treasure-panel {
+  max-width: 550px;
+  margin: 25px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #fff3b0, #ffd166);
+  color: #754500;
+  border: 4px solid #ffbd35;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px #00375c50;
+  animation: treasureAppear 0.7s ease;
+}
+
+.treasure-panel h2 {
+  margin: 10px 0;
+  font-size: 25px;
+}
+
+.treasure-panel p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.big-treasure {
+  font-size: 65px;
+  margin: 12px;
+  animation: treasureBounce 1.5s infinite;
+}
+
+/* Level complete */
+
+.level-complete-card {
+  padding: 45px 25px;
+  animation: treasureAppear 0.7s ease;
+}
+
+.level-complete-card h2 {
+  font-size: 29px;
   margin: 15px 0;
 }
 
-.home-card p,
-.game-card p {
-  font-size: 16px;
-  line-height: 1.6;
+.level-complete-card p {
   margin: 12px 0;
+  line-height: 1.6;
 }
+
+.complete-icon {
+  font-size: 75px;
+  animation: treasureBounce 1.5s infinite;
+}
+
+/* Question image */
+
+.question-image {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 20px auto;
+  border-radius: 15px;
+}
+
+input {
+  width: 220px;
+  padding: 13px;
+  border: 2px solid #25a9d0;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 17px;
+}
+
+/* Buttons */
 
 button {
   padding: 14px 28px;
@@ -160,28 +348,7 @@ button:hover {
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.question-image {
-  display: block;
-  width: 100%;
-  max-width: 420px;
-  margin: 20px auto;
-  border-radius: 15px;
-}
-
-input {
-  width: 220px;
-  padding: 13px;
-  border: 2px solid #25a9d0;
-  border-radius: 12px;
-  text-align: center;
-  font-size: 17px;
-}
-
-.message {
-  color: #078b67;
-  font-weight: 800;
+  transform: none;
 }
 
 .next-button {
@@ -194,46 +361,17 @@ input {
   color: #075078;
 }
 
-footer {
-  margin-top: 25px;
-  color: #e4fbff;
-  font-weight: 700;
+.message {
+  color: #078b67;
+  font-weight: 800;
 }
 
-@media (max-width: 600px) {
-  .game-header h1 {
-    font-size: 30px;
-  }
-
-  .home-card,
-  .game-card {
-    padding: 20px 15px;
-  }
-
-  .ocean-scene {
-    height: 200px;
-  }
-}
-
-/* Fish swimming animations */
-
-.fish-one {
-  animation: swimRight 5s ease-in-out infinite alternate;
-}
-
-.fish-two {
-  animation: swimLeft 6s ease-in-out infinite alternate;
-}
-
-.fish-three {
-  animation: swimRight 7s ease-in-out infinite alternate;
-}
+/* Animations */
 
 @keyframes swimRight {
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(70px);
   }
@@ -243,25 +381,386 @@ footer {
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(-70px);
   }
-}
-
-/* Floating bubbles */
-
-.bubble {
-  animation: floatBubble 3s ease-in-out infinite alternate;
 }
 
 @keyframes floatBubble {
   from {
     transform: translateY(0);
   }
-
   to {
     transform: translateY(-25px);
   }
 }
 
+@keyframes treasureAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes treasureBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Footer */
+
+footer {
+  margin-top: 25px;
+  color: #e4fbff;
+  font-weight: 700;
+}
+
+/* Correct answer animation */
+
+.game-card.correct {
+  animation: correctGlow 0.7s ease;
+  border: 4px solid #35c979;
+}
+
+/* Wrong answer animation */
+
+.game-card.wrong {
+  animation: wrongShake 0.4s ease;
+  border: 4px solid #ff7777;
+}
+
+@keyframes correctGlow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 white;
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px #35c979;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wrongShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+/* Floating star and coin reward */
+
+.reward-animation {
+  display: inline-block;
+  margin: 15px;
+  padding: 12px 22px;
+  border-radius: 25px;
+  background: #fff3b0;
+  color: #9b6500;
+  font-size: 25px;
+  font-weight: 900;
+  animation: rewardFloat 1s ease-in-out infinite alternate;
+}
+
+@keyframes rewardFloat {
+  from {
+    transform: translateY(5px) scale(1);
+  }
+  to {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+/* Aquarium Page */
+
+.aquarium-card {
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 30px;
+  background: white;
+  color: #075078;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px #00375c50;
+}
+
+.aquarium-card h2 {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.aquarium-card h3 {
+  margin: 20px;
+  color: #078b9c;
+}
+
+.aquarium-water {
+  position: relative;
+  min-height: 280px;
+  padding: 25px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #8ceafa, #0879b9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.empty-aquarium {
+  color: white;
+  font-weight: 800;
+  line-height: 1.8;
+}
+
+.fish-collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.collected-fish {
+  font-size: 55px;
+  animation: fishFloat 2s ease-in-out infinite alternate;
+}
+
+.collected-fish:nth-child(even) {
+  animation-delay: 0.5s;
+}
+
+.aquarium-bubbles span {
+  position: absolute;
+  bottom: -20px;
+  color: white;
+  font-size: 35px;
+  animation: aquariumBubble 4s infinite;
+}
+
+.aquarium-bubbles span:nth-child(1) {
+  left: 20%;
+}
+
+.aquarium-bubbles span:nth-child(2) {
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.aquarium-bubbles span:nth-child(3) {
+  left: 80%;
+  animation-delay: 2s;
+}
+
+@keyframes fishFloat {
+  from {
+    transform: translateY(8px);
+  }
+  to {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes aquariumBubble {
+  from {
+    bottom: -20px;
+    opacity: 0;
+  }
+  to {
+    bottom: 100%;
+    opacity: 1;
+  }
+}
+
+/* Fish Collection Catalogue */
+
+.fish-catalogue {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.fish-card {
+  padding: 20px 12px;
+  border-radius: 20px;
+  min-height: 190px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.fish-card:hover {
+  transform: translateY(-5px);
+}
+
+.fish-unlocked {
+  background: linear-gradient(135deg, #d6f9ff, #a4eaff);
+  border: 3px solid #25a9d0;
+}
+
+.fish-locked {
+  background: linear-gradient(135deg, #f1f4f6, #dce4e9);
+  border: 3px dashed #c2cbd2;
+  color: #89939c;
+}
+
+/* Fish emoji and lock badge */
+
+.catalogue-fish {
+  position: relative;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.fish-faded {
+  filter: grayscale(1);
+  opacity: 0.35;
+}
+
+.fish-lock-badge {
+  position: absolute;
+  top: 0;
+  right: calc(50% - 35px);
+  font-size: 17px;
+  filter: none;
+  opacity: 1;
+}
+
+.fish-unlocked .catalogue-fish {
+  animation: fishFloat 2s ease-in-out infinite alternate;
+}
+
+.fish-card h3 {
+  font-size: 17px;
+  margin: 8px 0;
+}
+
+.fish-card p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.fish-card small {
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 900;
+  color: #078b9c;
+}
+
+.fish-locked small {
+  color: #89939c;
+}
+
+/* Collection Progress */
+
+.collection-progress {
+  width: 100%;
+  height: 16px;
+  background: #dceef5;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 15px 0 25px;
+}
+
+.collection-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #20c997, #ffbd35);
+  border-radius: 20px;
+  transition: width 0.5s ease;
+}
+
+/* Collection Complete */
+
+.collection-complete {
+  margin: 25px 0;
+  padding: 25px 12px;
+  background: linear-gradient(135deg, #fff3b0, #ffd166);
+  border: 3px solid #ffbd35;
+  border-radius: 20px;
+  color: #754500;
+}
+
+.collection-complete h2 {
+  margin-bottom: 10px;
+}
+
+.collection-complete div {
+  font-size: 28px;
+  margin-top: 15px;
+}
+
+/* Mobile screen */
+
+@media (max-width: 600px) {
+  .game-header h1 {
+    font-size: 30px;
+  }
+
+  .home-card,
+  .game-card,
+  .levels-card,
+  .level-complete-card {
+    padding: 20px 15px;
+  }
+
+  .ocean-scene {
+    height: 200px;
+  }
+
+  .levels-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .level-button {
+    min-height: 145px;
+    padding: 12px 5px;
+  }
+
+  .level-button strong {
+    font-size: 16px;
+  }
+
+  .treasure-panel {
+    padding: 20px 12px;
+  }
+
+  .aquarium-card {
+    padding: 20px 15px;
+  }
+
+  .fish-catalogue {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .fish-card {
+    padding: 15px 8px;
+    min-height: 180px;
+  }
+
+  .catalogue-fish {
+    font-size: 40px;
+  }
+}
